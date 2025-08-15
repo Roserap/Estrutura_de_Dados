@@ -1,0 +1,16 @@
+public class SomaArrayRecursivo {
+
+    public static int somaArrayRecursivo(int[] array, int indice) {
+        if (indice == array.length) {
+            return 0;
+        } else {
+            return array[indice] + somaArrayRecursivo(array, indice + 1);
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] meuArray = {1, 2, 3, 4, 5};
+        int soma = somaArrayRecursivo(meuArray, 0);
+        System.out.println("A soma dos elementos deste array e: " + soma);
+    }
+}
