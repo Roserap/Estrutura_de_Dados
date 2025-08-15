@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class SomaRecursiva {
+
+    public static int somaRecursiva(int n) {
+        if (n <= 0) {
+            return 0;
+        } 
+        return n + somaRecursiva(n - 1);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite um numero inteiro positivo: ");
+        int numero = scanner.nextInt();
+
+        if (numero < 1) {
+            System.out.println("Por favor, digite um numero inteiro positivo.");
+        } else {
+            int soma = somaRecursiva(numero);
+            System.out.println("A soma dos numeros de 1 a " + numero + " é: " + soma);
+        }
+
+        
+        scanner.close();
+    }
+}
