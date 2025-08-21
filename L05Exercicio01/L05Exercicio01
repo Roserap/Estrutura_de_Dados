@@ -1,1 +1,59 @@
+package fase05.L05Exercicio01.controle;
 
+import fase05.L05Exercicio01.dominio.VendaProduto;
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+public class ControleVenda {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        DecimalFormat df = new DecimalFormat("#.00");  // Instância de DecimalFormat para formatar os valores
+
+        //Alteração para guardar os 5 valores
+
+        VendaProduto[] vendas = new VendaProduto[5];
+        int contador = 0;
+
+        while (contador < 5) {
+            
+            //Obtendo dados digitados pelo usuário
+
+            System.out.print("Digite o número da venda: ");
+            int numero = sc.nextInt();
+
+            System.out.print("Digite a quantidade de produtos: ");
+            int quantidade = sc.nextInt();
+
+            System.out.print("Digite o valor unitário do produto: ");
+            double valorUnitario = sc.nextDouble();
+
+            
+            vendas[contador] = new VendaProduto(numero, quantidade, valorUnitario);
+            contador++;
+
+            
+            if (contador < 5) {
+                System.out.print("Deseja adicionar outra venda? (s/n): ");
+                char resposta = sc.next().charAt(0);
+                if (resposta != 's' && resposta != 'S') {
+                    break;  
+                }
+            }
+        }
+
+        //Apresentando na tela os dados
+
+        System.out.println("\nVendas cadastradas:");
+        for (int i = 0; i < contador; i++) {
+            VendaProduto venda = vendas[i];
+            System.out.println("Número da venda: " + venda.getNumero());
+            System.out.println("Quantidade de produtos: " + venda.getQuantidade());
+            System.out.println("Valor unitário: R$ " + df.format(venda.getValorUnitario()));
+            System.out.println("Valor total a pagar: R$ " + df.format(venda.valorPagar()));
+            System.out.println("-----------------------------");
+        }
+
+        sc.close();  // Fechar o Scanner após o uso
+    }
+}
